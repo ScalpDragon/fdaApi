@@ -1,0 +1,4 @@
+Your Authorization-User is: REDACTED_EMAIL
+
+Your Authorization-Key is: REDACTED_KEY
+The Data Dashboard API usage documentation, which allows you to try out the end points and see the responses, can be found online at: https://datadashboard.fda.gov/ora/api/index.htm

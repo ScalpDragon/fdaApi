@@ -1,0 +1,3 @@
+Your Authorization-User is: REDACTED_EMAIL
+
+Your Authorization-Key is: REDACTED_KEY
