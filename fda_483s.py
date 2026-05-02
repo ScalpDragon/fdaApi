@@ -2,8 +2,8 @@ import requests
 import json
 import csv
 
-AUTH_USER = "REDACTED_EMAIL"
-AUTH_KEY = "REDACTED_KEY"
+AUTH_USER = ""
+AUTH_KEY = ""
 
 BASE_URL = "https://api-datadashboard.fda.gov/v1/"
 
