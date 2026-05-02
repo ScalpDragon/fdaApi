@@ -3,8 +3,8 @@ import json
 import datetime
 import csv
 
-AUTH_USER = "REDACTED_EMAIL"
-AUTH_KEY = "REDACTED_KEY"
+AUTH_USER = ""
+AUTH_KEY = ""
 
 BASE_URL = "https://www.accessdata.fda.gov/rest/iresapi/recalls/"
 
