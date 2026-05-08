@@ -1,7 +1,13 @@
 import requests
 import json
 import csv
+import os
 
+# Output directory helper
+OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'outputs'))
+
+def make_output_path(filename):
+    return os.path.join(OUTPUT_DIR, filename)
 from config import AUTH_USER, AUTH_KEY
 
 BASE_URL = "https://api-datadashboard.fda.gov/v1/"
@@ -193,6 +199,9 @@ if __name__ == "__main__":
     DATE_FROM = "2025-01-01"
     DATE_TO   = "2025-12-31"
 
+    # Derive year tag from the date range for dynamic output filenames
+    year_tag = DATE_FROM[:4]
+
     # --- Step 1: Fetch CDER drug inspection classifications ---
     inspections = fetch_inspections(
         date_from=DATE_FROM,
@@ -202,8 +211,8 @@ if __name__ == "__main__":
     )
 
     if inspections:
-        save_to_json(inspections, "../outputs/cder_483_inspections_2025.json")
-        save_to_csv(inspections, "../outputs/cder_483_inspections_2025.csv")
+        save_to_json(inspections, make_output_path(f"cder_483_inspections_{year_tag}.json"))
+        save_to_csv(inspections, make_output_path(f"cder_483_inspections_{year_tag}.csv"))
     else:
         print("No inspection records returned.")
 
@@ -220,8 +229,8 @@ if __name__ == "__main__":
     if feis_with_citations:
         citations = fetch_citations(feis_with_citations)
         if citations:
-            save_to_json(citations, "../outputs/cder_483_citations_2025.json")
-            save_to_csv(citations, "../outputs/cder_483_citations_2025.csv")
+            save_to_json(citations, make_output_path(f"cder_483_citations_{year_tag}.json"))
+            save_to_csv(citations, make_output_path(f"cder_483_citations_{year_tag}.csv"))
         else:
             print("No citation records returned.")
     else:

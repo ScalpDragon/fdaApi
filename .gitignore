@@ -1,1 +1,7 @@
+# Credentials – do not commit
 scripts/config.py
+read_me/fdaDataDashboar.txt
+read_me/fdaOIIauthorization.txt
+
+# Python cache
+__pycache__/
