@@ -2,6 +2,7 @@ import requests
 import json
 import datetime
 import csv
+import os
 
 AUTH_USER = ""
 AUTH_KEY = ""
@@ -102,9 +103,10 @@ def fetch_recalls(date_from, date_to, centers=None, classes=None, rows=100):
 
 
 def save_to_json(records, filename="recalls.json"):
-    with open(filename, "w") as f:
+    out_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'outputs', filename))
+    with open(out_path, "w") as f:
         json.dump(records, f, indent=2)
-    print(f"Saved {len(records)} records to {filename}")
+    print(f"Saved {len(records)} records to {out_path}")
 
 
 def save_to_csv(records, filename="recalls.csv"):
@@ -112,11 +114,12 @@ def save_to_csv(records, filename="recalls.csv"):
         print("No records to save.")
         return
     keys = list(records[0].keys())
-    with open(filename, "w", newline="", encoding="utf-8") as f:
+    out_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'outputs', filename))
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=keys)
         writer.writeheader()
         writer.writerows(records)
-    print(f"Saved {len(records)} records to {filename}")
+    print(f"Saved {len(records)} records to {out_path}")
 
 
 if __name__ == "__main__":

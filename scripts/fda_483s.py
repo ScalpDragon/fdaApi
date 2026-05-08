@@ -2,8 +2,7 @@ import requests
 import json
 import csv
 
-AUTH_USER = ""
-AUTH_KEY = ""
+from config import AUTH_USER, AUTH_KEY
 
 BASE_URL = "https://api-datadashboard.fda.gov/v1/"
 
@@ -191,8 +190,8 @@ def save_to_csv(records, filename):
 
 
 if __name__ == "__main__":
-    DATE_FROM = "2024-01-01"
-    DATE_TO   = "2024-12-31"
+    DATE_FROM = "2025-01-01"
+    DATE_TO   = "2025-12-31"
 
     # --- Step 1: Fetch CDER drug inspection classifications ---
     inspections = fetch_inspections(
@@ -203,8 +202,8 @@ if __name__ == "__main__":
     )
 
     if inspections:
-        save_to_json(inspections, "cder_483_inspections_2024.json")
-        save_to_csv(inspections, "cder_483_inspections_2024.csv")
+        save_to_json(inspections, "../outputs/cder_483_inspections_2025.json")
+        save_to_csv(inspections, "../outputs/cder_483_inspections_2025.csv")
     else:
         print("No inspection records returned.")
 
@@ -221,8 +220,8 @@ if __name__ == "__main__":
     if feis_with_citations:
         citations = fetch_citations(feis_with_citations)
         if citations:
-            save_to_json(citations, "cder_483_citations_2024.json")
-            save_to_csv(citations, "cder_483_citations_2024.csv")
+            save_to_json(citations, "../outputs/cder_483_citations_2025.json")
+            save_to_csv(citations, "../outputs/cder_483_citations_2025.csv")
         else:
             print("No citation records returned.")
     else:

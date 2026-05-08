@@ -89,8 +89,8 @@ class FDAExplorerApp(tk.Tk):
         self.product_var   = tk.StringVar(value="Drugs")
         self.fetch_citations_var = tk.BooleanVar(value=True)
         self.output_format_var   = tk.StringVar(value="both")
-        self.output_dir_var      = tk.StringVar(
-            value=os.path.dirname(os.path.abspath(__file__))
+        self.output_dir_var = tk.StringVar(
+            value=os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'outputs'))
         )
 
         # Classification checkbox vars
